@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+   
+    <div id="box_container">
+        <div class="box" id="ROCK">
+            <h3>ROCK</h3>
+        </div>
+    
+        <div class="box" id="PAPER">
+            <h3>PAPER</h3>
+        </div>
+
+        <div class="box" id="SCISSORS">
+            <h3>SCISSORS</h3>
+        </div>
+    </div>
+
+    <script>
+    
+
+        function computerPlay() {
+   
+            choices = ["Rock", "Paper", "Scissors"]
+            num = Math.floor((Math.random() * 3) + 0);
+            return choices[num];
+        }
+
+
+        function playRound(playerSelection, computerSelection) {
+            if (playerSelection == computerSelection){
+            console.log("Same draw!!!");
+            }
+            else if (playerSelection == "ROCK" && computerSelection == "Scissors"){
+                console.log("Yow won this round!!!")
+                return "p";
+            }
+            else if (playerSelection == "ROCK" && computerSelection == "PAPER"){
+                console.log("The computer won this round!!!")
+                return "c";
+            }
+            else if (playerSelection == "PAPER" && computerSelection == "ROCK"){
+                console.log("You won this round!!!")
+                return "p";
+            }
+            else if (playerSelection == "PAPER" && computerSelection == "SCISSORS"){
+                console.log("The computer won this round")
+                return "c";
+            }
+            else if (playerSelection == "SCISSORS" && computerSelection == "PAPER"){
+                console.log("You won this round!")
+                return "p";
+            }
+            else {
+                console.log("The computer won this round!")
+                return "c";
+            }
+
+        }
+
+        function game(){
+   
+            var computerSelection;
+            var inputValidator = false;
+            
+
+                var playerSelection; 
+                const buttons = document.querySelectorAll('.box');
+
+                buttons.forEach((button) => {
+                    
+                    // and for each one we add a 'click' listener
+                    button.addEventListener('click', (e) => {
+
+                        computerSelection = computerPlay().toUpperCase();
+                       
+                        
+                            console.log("This worked");
+                            playerSelection = button.id;
+                            console.log(playerSelection);
+                          
+                            playRound(playerSelection,computerSelection);
+                            
+                    });
+                });
+           
+                
+        }
+           
+
+            
+            
+        
+
+    game();
+
+
+  </script>
+
+  
+</body>
+</html>

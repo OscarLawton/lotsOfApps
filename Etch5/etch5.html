@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Etch 5</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    
+    <div id="button-box">
+				<div id="title">
+					<h1>Etch-A-Sketch</h1>
+				</div>
+				
+     
+    </div>
+    <div id="left_button_box">
+        <div id="clear-button">
+            <sup>Clear</sup>
+        </div>
+        <div id="pixel-button">
+            <sup>Resolution</sup>
+        </div>
+    </div>
+    <div id="right_button_box">
+        <div class="right_button">
+            <sup>Yellow</sup>
+          </div>
+          <div class="right_button">
+            <sup>Blue</sup>
+          </div>
+          <div class="right_button">
+            <sup>Red</sup>
+          </div>
+          <div class="right_button">
+            <sup>Black</sup>
+          </div>
+          <div class="right_button">
+            <sup>White</sup>
+          </div>
+          <div class="right_button">
+            <sup>Magic</sup>
+          </div>
+          <div class="right_button">
+            <sup>Gradient</sup>
+          </div>
+    </div>
+    <div id="box_container">
+       
+    </div>
+    
+  <script>
+      var black = true;
+      var red = false;
+      var blue = false;
+      var yellow = false;
+      var white = false;
+      var clear = false;
+      var magic = false;
+      var grad = false;
+
+      const clr_btn = document.querySelector("#clear-button");
+      const divs_all = document.querySelectorAll(".divs");
+      clr_btn.style.cursor = 'pointer';
+      clr_btn.onclick = function() {
+        const divs_all = document.querySelectorAll(".divs");
+        console.log("clr-btn worked",);
+        //divs_all.style.background = "white";
+        for (i = 0; i < divs_all.length; i++) {
+            divs_all[i].style.backgroundColor = "white";
+          }
+      };
+    
+      const set_res_btn = document.querySelector("#pixel-button");
+      set_res_btn.style.cursor = 'pointer';
+      set_res_btn.onclick = function() {
+        console.log("set res worked");
+        setRes();
+      };
+      
+      
+      const yellow_btn = document.querySelectorAll(".right_button")[0];
+      yellow_btn.onclick = function(){
+        console.log("yellow button workded");
+        black = false;
+        red = false;
+        blue = false;
+        yellow = true;
+        white = false;
+        magic = false;
+        grad = false;
+      };
+
+      const blue_btn = document.querySelectorAll(".right_button")[1];
+      blue_btn.onclick = function(){
+        console.log("red button workded");
+        black = false;
+        red = false;
+        blue = true;
+        yellow = false;
+        white = false;
+        magic = false;
+        grad = false;
+      };
+
+      const red_btn = document.querySelectorAll(".right_button")[2];
+      red_btn.onclick = function(){
+        console.log("red button workded");
+        black = false;
+        red = true;
+        blue = false;
+        yellow = false;
+        white = false;
+        magic = false;
+        grad = false;
+      };
+      const black_btn = document.querySelectorAll(".right_button")[3];
+      black_btn.onclick = function(){
+        console.log("Black button workded");
+        black = true;
+        red = false;
+        blue = false;
+        yellow = false;
+        white = false;
+        magic = false;
+        grad = false;
+      };
+
+      const white_btn = document.querySelectorAll(".right_button")[4];
+        white_btn.onclick = function(){
+        console.log("white button workded");
+        black = false;
+        red = false;
+        blue = false;
+        yellow = false;
+        white = true;
+        magic = false;
+        grad = false;
+      };
+      
+      
+      const magic_btn = document.querySelectorAll(".right_button")[5];
+        magic_btn.onclick = function(){
+        console.log("mgc button workded");
+        black = false;
+        red = false;
+        blue = false;
+        yellow = false;
+        white = false;
+        magic = true;
+        grad = false;
+      };
+
+      const grad_btn = document.querySelectorAll(".right_button")[6];
+        grad_btn.onclick = function(){
+        console.log("mgc button workded");
+        black = false;
+        red = false;
+        blue = false;
+        yellow = false;
+        white = false;
+        magic = false;
+        grad = true;
+      };
+
+      function createDiv(x_pos,y_pos,z, pSize){
+        
+        var div = document.createElement("div");
+        div.setAttribute("class", "divs");
+        div.style.position = "absolute";
+        div.style.width = pSize+"px";
+        div.style.height = pSize+"px";
+        div.style.background = "white";
+        div.style.color = "white";
+        div.style.left = x_pos+'px';
+        div.style.top = y_pos+'px';
+
+        var mouse = false;
+        var over = false;
+
+        var num = 0;
+        div.onmouseover = function(){
+          console.log("mouse over");
+          
+          if(red){
+
+            div.style.background = "red";
+         
+          }
+          else if(blue){
+
+            div.style.background = "blue";
+       
+          }
+          else if(yellow){
+        
+            div.style.background = "yellow";
+          
+          }
+          else if(white){
+
+          div.style.background = "white";
+
+          }
+          else if (black){
+
+          div.style.background = "black";
+
+          }
+          else if (magic){
+            var rnum1 = Math.floor((Math.random() * 256) + 0);
+            var rnum2 = Math.floor((Math.random() * 256) + 0);
+            var rnum3 = Math.floor((Math.random() * 256) + 0);
+            div.style.background = 'rgb(' + rnum1 + ',' + rnum2 + ',' + rnum3 + ')';
+          }
+          else{
+            
+            if (num == 0){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            
+            else if (num == 15 ){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 30){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 45){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 60){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 75){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 90){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 105){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 120){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 135){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 150){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 165){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 180){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 195){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 210){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 225){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 240){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+            else if (num == 255){
+              num += 15;
+              div.style.background = 'rgb(' + (255 - num) + ',' + (255 - num) + ',' + (255 - num) + ')';
+            }
+          }
+      }
+
+
+    document.getElementById("box_container").appendChild(div);
+
+
+    }
+
+    var x = 50;
+    var y = 50;
+    var z = 1;
+    var value;
+    function createCanvas(){
+
+      for(i=0;i<30;i++){
+        for(j=0;j<30;j++){
+          createDiv(x,y,z,20)
+          z+=1;
+          x+=20;
+        }
+        y+=20;
+        x=50;
+      }
+
+    }
+
+    function setRes(){
+      const divs_all = document.querySelectorAll(".divs");
+      for (i = 0; i < divs_all.length; i++) {
+            divs_all[i].style.backgroundColor = "white";
+            
+          }
+      gValue = prompt("Enter a new length for the grid (no larger than 200):");
+      var x = 50;
+      var y = 50;
+      var pixelSize = 600/gValue;
+      console.log(pixelSize)
+      console.log(gValue)
+      for(i=0;i<gValue;i++){
+        for(j=0;j<gValue;j++){
+          createDiv(x,y,z,pixelSize)
+          z+=1;
+          x+=pixelSize;
+        }
+        y+=pixelSize;
+        x=50;
+      } 
+
+    }
+    function setRed(){
+      black = false;
+      blue = false;
+      yellow = false;
+      red = true;
+      white = false;
+    }
+    function setBlue(){
+      black = false;
+      blue = true;
+      yellow = false;
+      red = false;
+      white = false;
+    }
+    function setYellow(){
+      black = false;
+      blue = false;
+      yellow = true;
+      red = false;
+      white = false;
+    }
+    createCanvas();
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+  <div id = "container">
+    
+  </div>
+  <button id="btn">Click Me Too</button>
+  <script>
+ 	const container = document.querySelector("#container");
+    const pElem = document.createElement("p");
+    pElem.style.color = "red";
+    pElem.textContent = "Hey I'm red!";
+
+    const hElem = document.createElement("h3")
+    hElem.style.color = "blue";
+    hElem.textContent = "I'm blue h3!"
+    const divElem = document.createElement("div");
+    divElem.classList.add('new');
+    divElem.style.border = "thick solid black";
+    divElem.style.backgroundColor = "pink";
+    container.appendChild(pElem);
+    container.appendChild(hElem);
+    container.appendChild(divElem);
+    const newH1 = document.createElement("h1");
+    newH1.innerHTML = "<h1>I'm in a div!</h1>";
+    const newP = document.createElement("p");
+    newP.innerHTML = "<p>Me too</p>";
+    divElem.appendChild(newH1); 
+    divElem.appendChild(newP);
+
+    var btn = document.getElementById('btn');
+        /*btn.addEventListener('click', () => {
+        alert("Hello World");*/
+        btn.addEventListener('click', function(e){
+            console.log(e.target)
+        });
+    //});
+  </script>
+
+  
+</body>
+</html>

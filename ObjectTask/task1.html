@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task</title>
+ 
+</head>
+<body>
+    
+   
+    
+  <script>
+
+    /*---------------- Check for if and object is empty of not -----------------------
+    /*let schedule = new Object();
+    console.log('This worked');
+    console.log()
+
+   
+    console.log(isEmpty(schedule));
+    schedule["name"] = "Fuck you";
+    console.log(schedule.noSuchProperty === undefined );
+    
+    console.log(isEmpty(schedule));
+    function isEmpty(something){
+        let check = true;
+        for(let key in something) {
+            
+            if (something[key] in something === undefined){
+                check = true;
+            }
+            else{
+                check = false;
+            }
+        }
+        return check;
+    }
+    console.log("This will work")*/
+    /*------------------- Check if you can change the property of const object ---------*/
+    /*const user = {
+        name : "John",
+
+    }
+    console.log(user.name);
+    user.name = "Pete";
+    console.log(user.name)*/
+
+    /*---------------- Add all numeric values together --------------------*/
+
+    /*let salaries = {
+        John: 100,
+        Ann: 160,
+        Pete: 130
+    }
+    let total = 0;
+    for(let key in salaries) {
+        //total = salaries[key] + salaries[key] + salaries[key];
+       total += salaries[key];
+    }
+
+    console.log(total);*/
+   
+    /* ------------------- Multiply all numeic propertys by two ---------*/undefined
+
+    let menu = {
+        width: 200,
+        height: 300,
+        title: "My menu"
+    };
+
+    function multiplyNumberic(obj){
+        let total = 0;
+        for(let key in obj){
+            if ((typeof obj[key]) === "number"){
+                obj[key] *= 2;
+            }
+        }
+    }
+
+    multiplyNumberic(menu);
+    
+    for(let key in menu){
+        console.log(menu[key]);
+    }
+    console.table(menu);
+  </script>
+
+
+</body>
+</html>

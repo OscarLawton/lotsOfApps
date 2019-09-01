@@ -1,0 +1,4 @@
+{
+    "dvURL": "mongodb://chatcatuser:password1@ds021046.mlab.com:21046/chatcat",
+    "sessionSecret" : "anythingGoesInHere"
+}

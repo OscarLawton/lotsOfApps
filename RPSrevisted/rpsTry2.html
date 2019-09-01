@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Try 2</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+   
+    <div id="box_container">
+        <div class="box" id="ROCK">
+            <h3>ROCK</h3>
+        </div>
+    
+        <div class="box" id="PAPER">
+            <h3>PAPER</h3>
+        </div>
+
+        <div class="box" id="SCISSORS">
+            <h3>SCISSORS</h3>
+        </div>
+    </div>
+
+    <div id="ans_container">
+
+    </div>
+   
+
+    <script>
+        const container = document.querySelector('#ans_container');
+        
+
+        const content = document.createElement('div');
+        
+        content.textContent = "";
+        
+        content.setAttribute('id', 'content'); 
+      
+        function computerPlay() {
+   
+            choices = ["ROCK", "PAPER", "SCISSORS"]
+            num = Math.floor((Math.random() * 3) + 0);
+            console.log("From the computerPLay " + choices[num]);
+            return choices[num];
+        }
+
+
+        function playRound(playerSelection, computerSelection) {
+            
+            content.classList.add('content');
+            
+            if (playerSelection == computerSelection){
+                console.log("Same draw!!!");
+            
+               
+                content.textContent = 'Same draw!';
+                
+            
+            }
+            else if (playerSelection == "ROCK" && computerSelection == "SCISSORS"){
+                console.log("Yow won this round!!!")
+                content.textContent = 'You won this round!';
+              
+                
+            
+               
+            }
+            else if (playerSelection == "ROCK" && computerSelection == "PAPER"){
+                console.log("The computer won this round!!!")
+                content.textContent = 'The computer won this round!';
+              
+            
+            }
+            else if (playerSelection == "PAPER" && computerSelection == "ROCK"){
+                console.log("You won this round!!!")
+                content.textContent = 'You won this round!';
+             
+             
+            }
+            else if (playerSelection == "PAPER" && computerSelection == "SCISSORS"){
+                content.textContent = 'The computer won this round!';
+                console.log("The computer won this round")
+                
+            
+            }
+            else if (playerSelection == "SCISSORS" && computerSelection == "PAPER"){
+                console.log("You won this round!")
+                content.textContent = 'You won this round!';
+            
+           
+            }
+            else {
+                console.log("The computer won this round!")
+                content.textContent = 'The computer won this round!';
+            
+            
+            }
+            console.log()
+            container.appendChild(content);
+          
+            
+        }
+
+        function game(){
+   
+            var computerSelection;
+            var inputValidator = false;
+            
+
+                var playerSelection; 
+                const buttons = document.querySelectorAll('.box');
+
+                buttons.forEach((button) => {
+                    
+                    // and for each one we add a 'click' listener
+                    button.addEventListener('click', (e) => {
+
+                        computerSelection = computerPlay();
+                        console.log(computerSelection)
+                        console.log("This worked");
+                        playerSelection = button.id;
+                        console.log(playerSelection);
+                          
+                        playRound(playerSelection,computerSelection);
+                            
+                    });
+                });
+           
+                
+        }
+           
+
+            
+            
+        
+
+    game();
+
+
+  </script>
+
+  
+</body>
+</html>

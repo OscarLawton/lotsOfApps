@@ -1,0 +1,165 @@
+body{
+    background: rgb(97, 97, 95);
+    font-family: sans-serif;
+   
+}
+
+@keyframes topFadeOut {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    
+}
+
+#body_container{
+    justify-content: center; 
+    align-items: center;
+    margin: 0px auto;
+    margin-bottom: 50px;
+}
+#box_container{
+
+    align-items: center;
+    display: flex;
+    padding-top: 100px;
+    height: 200px;
+    width: 700px;
+    margin: 0px auto;
+    margin-bottom: 50px;
+    justify-content: center;
+
+}
+
+#score_and_ans_container{
+    
+    align-items: center;
+    display: flex;
+    padding-top: 10px;
+    height: 200px;
+    width: 1000px;
+    margin: 0px auto;
+    margin-bottom: 5px;
+    justify-content: center;
+  
+}
+
+#ans_container{
+
+   
+    border-radius: .5rem;
+    margin: 1rem;
+    font-size: 1.2rem;
+    padding: 1rem .5rem;
+    transition: all .07s ease;
+    width: 10rem;
+    height: 2.4rem;
+    text-align: center;
+    color: white;
+  
+    text-shadow: 0 0 .5rem black;
+    margin: 0px auto;
+  
+}
+
+#player_score_container{
+   
+  
+  margin: 1rem;
+  font-size: 1.2rem;
+  padding: 1rem .5rem;
+  transition: all .07s ease;
+  width: 10rem;
+  height: 2.4rem;
+  text-align: center;
+  color: white;
+  
+  text-shadow: 0 0 .5rem black;
+  margin: 0px auto;
+ 
+  
+}
+#computer_score_container{
+  
+ 
+  margin: 1rem;
+  font-size: 1.2rem;
+  padding: 1rem .5rem;
+  transition: all .07s ease;
+  width: 10rem;
+  height: 2.4rem;
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 .5rem black;
+  margin: 0px auto;
+  
+  
+}
+
+.box{
+
+    border: .4rem solid black;
+    border-radius: .5rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem .5rem;
+    transition: all .07s ease;
+    width: 10rem;
+    text-align: center;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    text-shadow: 0 0 .5rem black;
+}
+
+.box:hover {
+    border-color: purple;
+ }
+.box:active {
+    border-color: red;   
+    transform: scale(1.3);
+}
+
+
+#content{
+    
+    animation-name: topFadeOut;
+    animation-duration: 1s;
+
+}
+
+#winContent{
+    transform: scale(1.3);
+}
+
+#results_container{
+
+    align-items: center;
+    display: flex;
+   
+    height: 200px;
+    width: 700px;
+    margin: 0px auto;
+    margin-bottom: 50px;
+    justify-content: center;
+}
+
+
+#r_div{
+    border: .4rem solid black;
+    border-radius: .5rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+   
+    transition: all .07s ease;
+    width: 15rem;
+    height: 5rem;
+    text-align: center;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    text-shadow: 0 0 .5rem black;
+}
+
+#r_div:hover {
+    border-color: purple;
+ }
+#r_div:active {
+    border-color: red;   
+}

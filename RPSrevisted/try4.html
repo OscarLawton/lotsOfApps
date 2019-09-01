@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Try 4</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  
+    <div id="box_container">
+        <div class="box" id="ROCK">
+            <h3>ROCK</h3>
+        </div>
+    
+        <div class="box" id="PAPER">
+            <h3>PAPER</h3>
+        </div>
+
+        <div class="box" id="SCISSORS">
+            <h3>SCISSORS</h3>
+        </div>
+    </div>
+
+    <div id="score_and_ans_container">
+
+        <div id="player_score_container">
+
+        </div>
+        <div id="ans_container">
+
+        </div>
+        <div id="computer_score_container">
+        
+        </div>
+
+    </div>
+    <div id="results_container">
+        
+    </div>
+   
+    <script>
+        
+        var playedAlready = false;
+        const container1 = document.querySelector('#score_and_ans_container');
+        const container2 = document.querySelector('#ans_container');
+        const container3 = document.querySelector('#player_score_container');
+        const container4 = document.querySelector('#computer_score_container');
+        const r_container = document.querySelector('#results_container');
+      
+        const content = document.createElement('div');
+        const player_score_content = document.createElement('div');
+        const computer_score_content = document.createElement('div');
+        
+        content.textContent = "";
+        
+         
+        
+        var playerScore = 0;
+        var computerScore = 0;
+        function computerPlay() {
+   
+            choices = ["ROCK", "PAPER", "SCISSORS"]
+            num = Math.floor((Math.random() * 3) + 0);
+            
+            return choices[num];
+        }
+
+
+        function playRound(playerSelection, computerSelection) {
+            
+            content.classList.add('content');
+            content.setAttribute('id', 'content');
+            player_score_content.setAttribute('id', 'content');
+            computer_score_content.setAttribute('id', 'content');
+            if (playerSelection == computerSelection){
+              
+            
+               
+                content.textContent = 'Same draw!';
+                player_score_content.textContent = "Player Score: " + playerScore;
+                computer_score_content.textContent = "Computer Score: " + computerScore;
+                
+            
+            }
+            else if (playerSelection == "ROCK" && computerSelection == "SCISSORS"){
+              
+                content.textContent = 'Rock > Scissors';
+                
+                
+                playerScore += 1;
+                player_score_content.textContent = "Player Score: " + playerScore;
+                computer_score_content.textContent = "Computer Score: " + computerScore;
+            
+               
+            }
+            else if (playerSelection == "ROCK" && computerSelection == "PAPER"){
+               
+                content.textContent = 'Rock < Paper';
+                computerScore += 1;
+                player_score_content.textContent = "Player Score: " + playerScore;
+                computer_score_content.textContent = "Computer Score: " + computerScore;
+            
+            }
+            else if (playerSelection == "PAPER" && computerSelection == "ROCK"){
+             
+                content.textContent = 'Paper > Rock';
+                playerScore+=1;
+                player_score_content.textContent = "Player Score: " + playerScore;
+                computer_score_content.textContent = "Computer Score: " + computerScore;
+             
+            }
+            else if (playerSelection == "PAPER" && computerSelection == "SCISSORS"){
+                content.textContent = 'Paper < Scissors';
+                
+                computerScore += 1;
+                player_score_content.textContent = "Player Score: " + playerScore;
+                computer_score_content.textContent = "Computer Score: " + computerScore;
+            }
+            else if (playerSelection == "SCISSORS" && computerSelection == "PAPER"){
+                
+                content.textContent = 'Scissors > Paper';
+                playerScore+=1;
+                player_score_content.textContent = "Player Score: " + playerScore;
+                computer_score_content.textContent = "Computer Score: " + computerScore;
+            }
+            else {
+             
+                content.textContent = 'Scissors < Rock';
+                computerScore += 1;
+                player_score_content.textContent = "Player Score: " + playerScore;
+                computer_score_content.textContent = "Computer Score: " + computerScore;
+            }
+
+            
+            const r_div = document.createElement('div');
+          
+            if (playerScore >= 5 & computerScore < 5){
+                r_div.setAttribute('id', "r_div");
+                r_div.setAttribute('style', 'white-space: pre;');
+                r_div.textContent = " You won! \r\n"
+                r_div.textContent += "Press to replay";
+                r_container.appendChild(r_div);
+                r_div.addEventListener('click', alertFunction);
+            
+                playerScore = 0;
+                computerScore = 0;
+                playedAlready = true;
+            }
+            else if (computerScore >= 5 & playerScore < 5){
+               
+                r_div.setAttribute('id', "r_div");
+                r_div.setAttribute('style', 'white-space: pre;');
+                r_div.setAttribute('style', 'white-space: pre;');
+                r_div.textContent = " Computer won. \r\n"
+                r_div.textContent += "Press to replay";
+                r_container.appendChild(r_div);
+                r_div.addEventListener('click', alertFunction);
+                
+                playerScore = 0;
+                computerScore = 0;
+                playedAlready = true;
+            }
+
+           
+            container2.appendChild(content);
+            container3.appendChild(player_score_content);
+            container4.appendChild(computer_score_content);
+            
+        }
+
+        function game(){
+            
+            var computerSelection;
+            
+            
+
+                var playerSelection; 
+                
+                
+                    const buttons = document.querySelectorAll('.box');
+                    buttons.forEach((button) => {
+                    
+                        // and for each one we add a 'click' listener
+                        button.addEventListener('click', (e) => {
+                        if (playedAlready === false){
+                        computerSelection = computerPlay();
+                       
+                        playerSelection = button.id;
+                      
+                          
+                         playRound(playerSelection,computerSelection);
+                        }
+                     
+                        });
+                    });
+                }
+                
+                
+        
+        
+        function alertFunction(){
+            console.log("this worked******")
+                playerScore = 0;
+                computerScore = 0;
+                playedAlready = false;
+                player_score_content.textContent = "Player Score: " + playerScore;
+                computer_score_content.textContent = "Computer Score: " + computerScore;
+                r_container.removeChild(r_div);
+                container2.removeChild(content);
+                container3.removeChild(player_score_content);
+                container4.removeChild(computer_score_content);
+        }
+            
+            
+        
+
+    game();
+
+
+  </script>
+
+  
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+        <h1>
+                Just For Shits And Giggles
+            </h1>
+            <div id="container"></div>
+            <button onclick = "smackers()">Click</button>
+  <script>
+ 	// Your JavaScript goes here!
+    console.log("Hello, World!")
+    const container = document.querySelector('#container');
+
+    const content = document.createElement('div');
+    content.classList.add('content');
+    content.textContent = 'This is the glorious text-content!';
+    content.setAttribute('id', 'theDiv');
+    container.appendChild(content);
+
+    function smackers(){
+        console.log("oh fuck")
+        document.getElementById("theDiv").style.color = "red";
+        document.getElementById("theDiv").style.backgroundColor = "green";
+        document.getElementById("theDiv").innerHTML= "<h1>YOu clicked the button, didn't you!</h1>";
+        
+    }
+
+  </script>
+
+  
+</body>
+</html>

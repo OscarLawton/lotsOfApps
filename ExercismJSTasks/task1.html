@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task</title>
+ 
+</head>
+<body>
+    
+   
+    
+    <script>
+        function isLeap(year){
+            console.log("in function");
+            if(year % 4 === 0){
+                console.log("in first if");
+                if(year % 100 === 0){
+                    console.log("in first nested if");
+                    if (year % 400 === 0){
+                        console.log("in second nested if")
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+                return true;
+            }
+            else{
+                console.log("in second else");
+                return false;
+            }
+        }
+
+        console.log(isLeap(2015))
+        console.log(isLeap(2016))
+        console.log(isLeap(2100))
+        console.log(isLeap(2000))
+        console.log(isLeap(1800))
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Etch2</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    
+    <div id="box_container">
+       
+    </div>
+    <button onclick="myFunction()">Click me</button>
+  <script>
+    const container = document.querySelector("#box_container");
+    
+    const c_height = container.clientHeight;
+    console.log(c_height);
+    const position = container.getBoundingClientRect();
+    //var px_num = prompt("how's agoing?");
+
+    container.getBoundingClientRect();
+    for(i = 15; i < c_height; i+= (c_height / px_num)){
+      for(j = 15; j < c_height; j+= (c_height / px_num)){  
+            box = document.createElement("div");
+            box.setAttribute("class", "box");
+            
+            
+           
+            box.style.left = position.left + i +'px';
+            box.style.top = position.top + j +'px';
+            box.style.width = ""+ (c_height / px_num) + "px";
+            box.style.height = ""+ (c_height / px_num) + "px";
+            box.setAttribute("onmouseover","this.style.background='black'");
+            container.appendChild(box);
+        
+            //console.log(j);
+
+        }
+    }
+
+    function myFunction(){
+      for(i = 50; i < c_height; i+= (c_height / px_num)){
+        for(j = 50; j < c_height; j+= (c_height / px_num)){  
+            box = document.createElement("div");
+            box.setAttribute("class", "box");
+            
+            box.style.position = "relative";
+            box.style.color = "white";
+            box.style.left = position.left + i +'px';
+            box.style.top = position.top + j +'px';
+            box.style.width = ""+ (c_height / px_num) + "px";
+            box.style.height = ""+ (c_height / px_num) + "px";
+            box.style.background = "white";
+            box.setAttribute("onmouseover","this.style.background='black'");
+            container.appendChild(box);
+        
+            //console.log(j);
+
+        }
+      }
+    }
+    var px_num = 30;
+    function createCanvas(){
+      for(i = -150; i < c_height; i+= (c_height / px_num)){
+        for(j = 150; j < c_height; j+= (c_height/ px_num)){  
+            box = document.createElement("div");
+            //box.setAttribute("class", "box");
+            
+            box.style.position = "absolute";
+            box.style.color = "white";
+            box.style.left = position.left + i +'px';
+            box.style.top = position.top + j +'px';
+            box.style.width = ""+ ((c_height-200)/ px_num) + "px";
+            box.style.height = ""+ ((c_height-200) / px_num) + "px";
+            box.style.background = "white";
+            box.setAttribute("onmouseover","this.style.background='black'");
+            container.appendChild(box);
+        
+            //console.log(j);
+
+        }
+      }
+    }
+    createCanvas();
+
+  </script>
+
+
+</body>
+</html>
